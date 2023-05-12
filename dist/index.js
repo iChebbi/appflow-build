@@ -332,7 +332,7 @@ function getClient(ctx) {
         headers: {
             Authorization: `Bearer ${token}`,
             // Format adopted from standard defined here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent
-            'User-Agent': 'AppflowBuildAction/1.0.3'
+            'User-Agent': 'AppflowBuildAction/1.0.3',
         },
     });
 }
