@@ -1,5 +1,4 @@
-import * as core from '@actions/core';
-import { AxiosInstance } from 'axios';
+import { AxiosError, AxiosInstance } from 'axios';
 
 export async function validateToken(
   client: AxiosInstance,
@@ -10,7 +9,8 @@ export async function validateToken(
     const { data: user } = resp.data;
     ctx.logger.print(`Logged in as ${user.username}.`);
   } catch (e) {
-    const response = e && e.response;
+    const axiosError = e as AxiosError;
+    const response = axiosError && axiosError.response;
     if (response && response.status === 401) {
       throw new Error('Invalid Token. Failed to Authenticate.');
     }

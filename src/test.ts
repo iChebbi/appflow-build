@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { runWithContext } from './run';
 
 async function test() {
@@ -24,12 +25,13 @@ async function test() {
       // filename: 'myfile',
     });
   } catch (error) {
-    if (error.response) {
+    const axiosError = error as AxiosError;
+    if (axiosError.response) {
       try {
-        console.error(JSON.stringify(error.response.data, null, 2));
+        console.error(JSON.stringify(axiosError.response.data, null, 2));
       } catch (e) {}
     }
-    console.error(error.message);
+    console.error(axiosError.message);
   }
 }
 

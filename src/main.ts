@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import * as artifact from '@actions/artifact';
 import { getClient } from './client';
 import { runWithContext } from './run';
+import { AxiosError } from 'axios';
 
 async function run(): Promise<void> {
   const logger: Logger = {
@@ -41,12 +42,14 @@ async function run(): Promise<void> {
       core.info(`Uploaded artifact ${uploadResult.artifactName}`);
     }
   } catch (error) {
-    if (error.response) {
+    const axiosError = error as AxiosError;
+    if (axiosError.response) {
       try {
-        core.error(JSON.stringify(error.response.data, null, 2));
+        core.error(JSON.stringify(axiosError.response.data, null, 2));
       } catch (e) {}
     }
-    core.setFailed(error.message);
+
+    core.setFailed(axiosError.message);
   }
 }
 
