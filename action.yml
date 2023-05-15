@@ -1,4 +1,4 @@
-name: 'Trigger Mobile Builds with Appflow'
+name: 'Trigger Mobile Builds with Appflow (Fork)'
 description: 'GitHub Action for triggering Appflow builds.'
 branding:
   icon: 'package'
