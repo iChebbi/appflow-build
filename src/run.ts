@@ -1,8 +1,7 @@
-import { AxiosInstance } from 'axios';
 import { triggerNativeBuild, triggerWebBuild } from './build';
 import {
-  getBuildStack,
   getAndValidateBuildType,
+  getBuildStack,
   getPlatform,
 } from './build-stack';
 import { getClient } from './client';

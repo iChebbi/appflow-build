@@ -1,6 +1,5 @@
 import * as core from '@actions/core';
 import * as artifact from '@actions/artifact';
-import { getClient } from './client';
 import { runWithContext } from './run';
 import { AxiosError } from 'axios';
 
