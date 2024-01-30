@@ -49,5 +49,5 @@ inputs:
     description: 'Set this to determine the number of days to retain the uploaded artifact [1-90](defaults to 90).'
     default: 90
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
